@@ -27,11 +27,17 @@ public class ch5_5 {
         );
 
         //1. 요소의 합
-        int sum = numbers.stream().reduce(0, (a, b) -> a + b); //초기값 0 존재.
-        System.out.println(sum);
 
-        Optional<Integer> sum2 = numbers.stream().reduce((a, b) -> a + b); //초기값이 없음.
-        sum2.ifPresent(System.out::println);
+        int sum1 = 0;
+        for (Integer x : numbers) {
+            sum1 += x;
+        }
+
+        int sum2 = numbers.stream().reduce(0, (a, b) -> a + b); //초기값 0 존재.
+        System.out.println(sum2);
+
+        Optional<Integer> sum3 = numbers.stream().reduce((a, b) -> a + b); //초기값이 없음.
+        sum3.ifPresent(System.out::println);
 
         //2. 최댓값과 최솟값
         Optional<Integer> max = numbers.stream().reduce((a, b) -> a > b ? a : b); //Integer::max
